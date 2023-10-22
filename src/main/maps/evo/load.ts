@@ -63,6 +63,7 @@ const parseClassFile = (str: string): Class => {
 };
 const loadClass = async (path: string) => {
   const classDir = await fs.readdir(path);
+  console.log(classDir);
   const name = classDir
     .filter((el) => el.indexOf('[Level ') !== -1)
     .sort((a, b) => a.localeCompare(b, 'en', { numeric: true }))
@@ -72,19 +73,21 @@ const loadClass = async (path: string) => {
     return null;
   }
 
-  const classFile = await fs.readFile(`${path}\\${name}`, 'utf-8');
-
+  const classFile = await fs.readFile(`${path}/${name}`, 'utf-8');
+  console.log(`${path}/${name}`);
   return Object.assign(parseClassFile(classFile), {
     level: name?.slice(6, name && name.length ? name.length - 5 : 0),
   });
 };
 
 export const loadTevefData = async (path: string) => {
+  console.log(path);
   const potentialClasses = await fs.readdir(path);
+  console.log(potentialClasses);
   const classes = potentialClasses.filter((el) => allClasses.includes(el));
-
+  console.log(classes);
   const data = await Promise.all(
-    classes.map((cl) => loadClass(`${path}\\${cl}`)),
+    classes.map((cl) => loadClass(`${path}/${cl}`)),
   );
 
   return data;

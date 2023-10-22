@@ -14,7 +14,7 @@ import fs from 'fs/promises';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
 import { loadTevefData } from './maps/evo/load';
-import { executeCommand, executeCommandLegacy } from './dirt/keyboard';
+import { executeCommand } from './dirt/keyboard';
 
 let mainWindow: BrowserWindow | null = null;
 
@@ -30,13 +30,8 @@ ipcMain.on('load', async (event, arg, legacy) => {
     globalShortcut.unregister('A');
     // eslint-disable-next-line no-restricted-syntax
     for (const command of arg) {
-      if (legacy) {
-        // eslint-disable-next-line no-await-in-loop
-        await executeCommandLegacy(command);
-      } else {
-        // eslint-disable-next-line no-await-in-loop
-        await executeCommand(command);
-      }
+      // eslint-disable-next-line no-await-in-loop
+      await executeCommand(command);
     }
   });
 });

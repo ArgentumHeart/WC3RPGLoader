@@ -1,5 +1,6 @@
 import { Key, keyboard, clipboard } from '@nut-tree/nut-js';
 
+/*
 export const executeCommand = async (command: string) => {
   keyboard.config.autoDelayMs = 50;
   return clipboard.setContent(command).then(
@@ -12,8 +13,9 @@ export const executeCommand = async (command: string) => {
     }
   );
 };
+*/
 
-export const executeCommandLegacy = async (command: string) => {
+export const executeCommand = async (command: string) => {
   keyboard.config.autoDelayMs = 1;
   await keyboard.pressKey(Key.Enter);
   await keyboard.releaseKey(Key.Enter);

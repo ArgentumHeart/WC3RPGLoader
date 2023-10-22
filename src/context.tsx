@@ -23,7 +23,7 @@ export const CharacterProvider: FC<PropsWithChildren> = ({ children }) => {
   const loadClasses = () => {
     window.electron.ipcRenderer.sendMessage(
       'ipc',
-      `${wc3path}\\CustomMapData\\Twilight's Eve Evo\\${battleTag}`,
+      `${wc3path}/CustomMapData/Twilight's Eve Evo/${battleTag}`,
     );
   };
   const getCharacterById = (id?: string) => {
@@ -60,6 +60,7 @@ export const CharacterProvider: FC<PropsWithChildren> = ({ children }) => {
   };
   useEffect(() => {
     window.electron.ipcRenderer.on('ipc', (arg: any) => {
+      console.log(arg);
       // @ts-ignore
       setAllClasses(arg);
     });
