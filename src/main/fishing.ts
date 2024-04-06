@@ -32,9 +32,7 @@ export function armFishing(rodHotkey: any) {
       }
     })
   });
-  globalShortcut.register(getCommandFor('-'), () => {
-    stop();
-  });
+  globalShortcut.register(getCommandFor('-'), () => stop());
 }
 
 export function disarmFishing() {
