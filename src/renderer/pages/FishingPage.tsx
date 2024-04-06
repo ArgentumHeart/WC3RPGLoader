@@ -22,7 +22,7 @@ export function FishingPage() {
     window.electron.ipcRenderer.sendMessage('fishing_disarm');
   }
 
-  const keys = Object.keys(Key).filter((item) => isNaN(Number(item)));
+  const keys = Object.keys(Key).filter((item) => !isNaN(Number(item))).map(item => Number(item));
 
   return (
     <>
@@ -43,8 +43,8 @@ export function FishingPage() {
           label="Age"
         >
           {keys.map(value => (
-            <MenuItem key={value} value={Key[value]}>
-              {value}
+            <MenuItem value={value}>
+              {Key[value]}
             </MenuItem>
           ))}
         </Select>
