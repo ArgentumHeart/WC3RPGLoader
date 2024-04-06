@@ -9,16 +9,19 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 export function FishingPage() {
   const [rodButton, setRodButton] = useState(Key.NumPad8);
+  const [fishingStarted, setFishingStarted] = useState(false);
 
   const handleChange = (event: SelectChangeEvent) => {
     // @ts-ignore
     setRodButton(event.target.value);
   };
   const onStartClick = () => {
+    setFishingStarted(true);
     window.electron.ipcRenderer.sendMessage('fishing_arm', rodButton);
   }
 
   const onCancelClick = () => {
+    setFishingStarted(false);
     window.electron.ipcRenderer.sendMessage('fishing_disarm');
   }
 
@@ -33,7 +36,7 @@ export function FishingPage() {
 
       <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
         <InputLabel id="standard-label">Rod hotkey</InputLabel>
-        <Select
+        <Select disabled={fishingStarted}
           labelId="standard-label"
           id="select-standard"
           value={rodButton}
@@ -56,6 +59,7 @@ export function FishingPage() {
       <Button onClick={onCancelClick} color="warning">
         Stop
       </Button>
+      <Typography variant="body2">Fishing {fishingStarted ? 'started' : 'stopped'}</Typography>
     </>
   )
 }
