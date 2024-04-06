@@ -22,7 +22,7 @@ export function FishingPage() {
     window.electron.ipcRenderer.sendMessage('fishing_disarm');
   }
 
-  const keys = Object.keys(Key).filter((item) => !isNaN(Number(item))).map(item => Number(item));
+  const keys = Object.keys(Key).map(item => Number(item)).filter((item) => !isNaN(item));
 
   return (
     <>
