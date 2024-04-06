@@ -22,6 +22,8 @@ export function FishingPage() {
     window.electron.ipcRenderer.sendMessage('fishing_disarm');
   }
 
+  const keys = Object.keys(Key).filter((item) => isNaN(Number(item)));
+
   return (
     <>
       <Typography variant="h6">Current hotkeys:</Typography>
@@ -40,13 +42,11 @@ export function FishingPage() {
           onChange={handleChange}
           label="Age"
         >
-          <MenuItem value={Key.NumPad8}>Numpad 8</MenuItem>
-          <MenuItem value={Key.Num6}>6</MenuItem>
-          <MenuItem value={Key.Num5}>5</MenuItem>
-          <MenuItem value={Key.Num4}>4</MenuItem>
-          <MenuItem value={Key.Num3}>3</MenuItem>
-          <MenuItem value={Key.Num2}>2</MenuItem>
-          <MenuItem value={Key.Num1}>1</MenuItem>
+          {keys.map(value => (
+            <MenuItem key={value} value={Key[value]}>
+              {value}
+            </MenuItem>
+          ))}
         </Select>
       </FormControl>
       <br />
