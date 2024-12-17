@@ -1,5 +1,3 @@
-const FALLBACK_COLOR = '#082f49'
-
 const AERELIS_COLOR = '#71368A'
 const FATE_COLOR = '#F0D200'
 const RAISING_HEART_COLOR = '#B116D8'
@@ -15,7 +13,7 @@ const ENDER_COLOR = '#992D22'
 const BLADE_OF_AWE_COLOR = '#ED0004'
 const HOPE_COLOR = '#598CF6'
 
-export const colors = {
+export default {
     'Sniper': AERELIS_COLOR,
     'Monster Hunter': AERELIS_COLOR,
 
@@ -56,6 +54,4 @@ export const colors = {
 
     'Prophetess': HOPE_COLOR,
     'Hierophant': HOPE_COLOR,
-
-    fallback: FALLBACK_COLOR,
 } as any;

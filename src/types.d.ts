@@ -15,6 +15,7 @@ export interface IClassLoad {
 interface IDamagePerPlayer { 
   damageType: string;
   players: Array<{
+    slotNumber: number;
     playerName: string;
     className: string;
     damagePercentage: number;
