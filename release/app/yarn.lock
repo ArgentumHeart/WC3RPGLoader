@@ -24,7 +24,7 @@
     pixelmatch "^4.0.2"
     tinycolor2 "^1.6.0"
 
-"@jimp/custom@^0.22.12", "@jimp/custom@>=0.3.5":
+"@jimp/custom@^0.22.12":
   version "0.22.12"
   resolved "https://registry.npmjs.org/@jimp/custom/-/custom-0.22.12.tgz"
   integrity sha512-xcmww1O/JFP2MrlGUMd3Q78S3Qu6W3mYTXYuIqFq33EorgYHV/HqymHfXy9GjiCJ7OI+7lWx6nYFOzU7M4rd1Q==
@@ -48,14 +48,14 @@
     "@jimp/utils" "^0.22.12"
     jpeg-js "^0.4.4"
 
-"@jimp/plugin-blit@^0.22.12", "@jimp/plugin-blit@>=0.3.5":
+"@jimp/plugin-blit@^0.22.12":
   version "0.22.12"
   resolved "https://registry.npmjs.org/@jimp/plugin-blit/-/plugin-blit-0.22.12.tgz"
   integrity sha512-xslz2ZoFZOPLY8EZ4dC29m168BtDx95D6K80TzgUi8gqT7LY6CsajWO0FAxDwHz6h0eomHMfyGX0stspBrTKnQ==
   dependencies:
     "@jimp/utils" "^0.22.12"
 
-"@jimp/plugin-blur@^0.22.12", "@jimp/plugin-blur@>=0.3.5":
+"@jimp/plugin-blur@^0.22.12":
   version "0.22.12"
   resolved "https://registry.npmjs.org/@jimp/plugin-blur/-/plugin-blur-0.22.12.tgz"
   integrity sha512-S0vJADTuh1Q9F+cXAwFPlrKWzDj2F9t/9JAbUvaaDuivpyWuImEKXVz5PUZw2NbpuSHjwssbTpOZ8F13iJX4uw==
@@ -69,7 +69,7 @@
   dependencies:
     "@jimp/utils" "^0.22.12"
 
-"@jimp/plugin-color@^0.22.12", "@jimp/plugin-color@>=0.8.0":
+"@jimp/plugin-color@^0.22.12":
   version "0.22.12"
   resolved "https://registry.npmjs.org/@jimp/plugin-color/-/plugin-color-0.22.12.tgz"
   integrity sha512-xImhTE5BpS8xa+mAN6j4sMRWaUgUDLoaGHhJhpC+r7SKKErYDR0WQV4yCE4gP+N0gozD0F3Ka1LUSaMXrn7ZIA==
@@ -91,7 +91,7 @@
   dependencies:
     "@jimp/utils" "^0.22.12"
 
-"@jimp/plugin-crop@^0.22.12", "@jimp/plugin-crop@>=0.3.5":
+"@jimp/plugin-crop@^0.22.12":
   version "0.22.12"
   resolved "https://registry.npmjs.org/@jimp/plugin-crop/-/plugin-crop-0.22.12.tgz"
   integrity sha512-FNuUN0OVzRCozx8XSgP9MyLGMxNHHJMFt+LJuFjn1mu3k0VQxrzqbN06yIl46TVejhyAhcq5gLzqmSCHvlcBVw==
@@ -162,21 +162,21 @@
     "@jimp/utils" "^0.22.12"
     load-bmfont "^1.4.1"
 
-"@jimp/plugin-resize@^0.22.12", "@jimp/plugin-resize@>=0.3.5", "@jimp/plugin-resize@>=0.8.0":
+"@jimp/plugin-resize@^0.22.12":
   version "0.22.12"
   resolved "https://registry.npmjs.org/@jimp/plugin-resize/-/plugin-resize-0.22.12.tgz"
   integrity sha512-3NyTPlPbTnGKDIbaBgQ3HbE6wXbAlFfxHVERmrbqAi8R3r6fQPxpCauA8UVDnieg5eo04D0T8nnnNIX//i/sXg==
   dependencies:
     "@jimp/utils" "^0.22.12"
 
-"@jimp/plugin-rotate@^0.22.12", "@jimp/plugin-rotate@>=0.3.5":
+"@jimp/plugin-rotate@^0.22.12":
   version "0.22.12"
   resolved "https://registry.npmjs.org/@jimp/plugin-rotate/-/plugin-rotate-0.22.12.tgz"
   integrity sha512-9YNEt7BPAFfTls2FGfKBVgwwLUuKqy+E8bDGGEsOqHtbuhbshVGxN2WMZaD4gh5IDWvR+emmmPPWGgaYNYt1gA==
   dependencies:
     "@jimp/utils" "^0.22.12"
 
-"@jimp/plugin-scale@^0.22.12", "@jimp/plugin-scale@>=0.3.5":
+"@jimp/plugin-scale@^0.22.12":
   version "0.22.12"
   resolved "https://registry.npmjs.org/@jimp/plugin-scale/-/plugin-scale-0.22.12.tgz"
   integrity sha512-dghs92qM6MhHj0HrV2qAwKPMklQtjNpoYgAB94ysYpsXslhRTiPisueSIELRwZGEr0J0VUxpUY7HgJwlSIgGZw==
@@ -312,7 +312,15 @@
     "@nut-tree/libnut-linux" "2.8.0"
     "@nut-tree/libnut-win32" "2.8.0"
 
-"@nut-tree/nut-js@^3", "@nut-tree/nut-js@4.5.0":
+"@nut-tree/node-mac-permissions@2.2.1":
+  version "2.2.1"
+  resolved "https://pkg.nutjs.dev/@nut-tree/node-mac-permissions/-/node-mac-permissions-2.2.1.tgz#925597509cb4492d2567dd04607f58c531b3584e"
+  integrity sha512-yoijwCqt2yS9UFTv7THGUwZgy2D2TorN703QpYNOergbTJ6vEmeG379pIZDfBuvf56n24RMzKJVoSqr9WIq/Yw==
+  dependencies:
+    bindings "1.5.0"
+    node-addon-api "5.0.0"
+
+"@nut-tree/nut-js@4.5.0":
   version "4.5.0"
   resolved "https://pkg.nutjs.dev/@nut-tree/nut-js/-/nut-js-4.5.0.tgz"
   integrity sha512-OPm0bsqQOyZPFrg+LIJ9+7hm7JoBm3pY5uhsmxwRooOQQf0k6wpyXu4ACu4H5GB9Th+jRHRN/TLM47FaXltz6A==
@@ -581,6 +589,11 @@ node-abort-controller@3.1.1:
   resolved "https://registry.npmjs.org/node-abort-controller/-/node-abort-controller-3.1.1.tgz"
   integrity sha512-AGK2yQKIjRuqnc6VkX2Xj5d+QW8xZ87pa1UK6yA6ouUyuxfHuMP6umE5QK7UmTeOAymo+Zx1Fxiuw9rVx8taHQ==
 
+node-addon-api@5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/node-addon-api/-/node-addon-api-5.0.0.tgz#7d7e6f9ef89043befdb20c1989c905ebde18c501"
+  integrity sha512-CvkDw2OEnme7ybCykJpVcKH+uAOLV2qLqiyla128dN9TkEWfrYmxG6C2boDe5KcNQqZF3orkqzGgOMvZ/JNekA==
+
 node-fetch@^2.6.1:
   version "2.7.0"
   resolved "https://registry.npmjs.org/node-fetch/-/node-fetch-2.7.0.tgz"
@@ -708,6 +721,8 @@ regenerator-runtime@^0.13.3:
 
 rxjs@*:
   version "7.8.1"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.8.1.tgz#6f6f3d99ea8044291efd92e7c7fcf562c4057543"
+  integrity sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==
   dependencies:
     tslib "^2.1.0"
 
@@ -796,7 +811,7 @@ typed-emitter@2.1.0:
   resolved "https://registry.npmjs.org/typed-emitter/-/typed-emitter-2.1.0.tgz"
   integrity sha512-g/KzbYKbH5C2vPkaXGu8DJlHrGKHLsM25Zg9WuC9pMGfuvT+X25tZQWo5fK1BjBm8+UrVE9LDCvaY0CQk+fXDA==
   optionalDependencies:
-    rxjs "*"
+    rxjs "^7.5.2"
 
 utif2@^4.0.1:
   version "4.1.0"

@@ -29,7 +29,7 @@ function DebounceInput(props: InputProps & DebounceProps) {
 export function ItemsPage() {
   const { items } = useItemContext();
   const [filter, setFilter] = useState<string>('');
-
+  console.log(items);
   const filteredItems = useMemo(() => {
     return Object.keys(items).filter((id) =>
       id.toLowerCase().includes(filter.toLowerCase()),
