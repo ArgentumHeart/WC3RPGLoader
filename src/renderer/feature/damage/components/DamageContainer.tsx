@@ -1,6 +1,8 @@
-import { useMemo } from "react";
+import { useState, useMemo } from "react";
 import { useParams } from "react-router";
 import Box from "@mui/material/Box/Box"
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { useDamageReportContext } from "../context"
 import Typography from "@mui/material/Typography";
 import { DamageTypeSelector } from "./DamageTypeSelector";
@@ -9,6 +11,21 @@ import { DamageBarsView } from "./DmgBarsView";
 export const DamageContainer = () => {
     const { dungeonName, damageTypes } = useDamageReportContext();
     const { type } = useParams();
+    const [colorScheme, setColorScheme] = useState<'slot' | 'class'>('slot');
+
+    const handleColorSchemeClick  = (
+        event: React.MouseEvent<HTMLElement>,
+        type: string
+    ) => {
+        switch(type) {
+            case 'slot':
+                setColorScheme('slot');
+                break;
+            case 'class':
+                setColorScheme('class');
+                break;    
+        }
+    }
 
     const damageReport = useMemo(() => {
         if (!type || type == '' || !damageTypes[type]) return undefined;
@@ -26,7 +43,19 @@ export const DamageContainer = () => {
                 <Typography variant="h6">{dungeonName}</Typography>
                 <DamageTypeSelector/>
             </Box>
-            <DamageBarsView damageReport={damageReport}/>
+            <DamageBarsView 
+                colorScheme={colorScheme}
+                damageReport={damageReport}
+            />
+            <ToggleButtonGroup
+                sx={{ marginTop: '10px'}}
+                size="small"
+                exclusive
+                value={colorScheme}
+                onChange={handleColorSchemeClick}>
+                <ToggleButton value='slot' key='slot'>Slot</ToggleButton>
+                <ToggleButton value='class' key='class'>Class</ToggleButton>
+            </ToggleButtonGroup>
         </div>
     )
 }

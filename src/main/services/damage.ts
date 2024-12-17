@@ -19,7 +19,7 @@ export function createDamageService(settingsService: ISettingsService) {
         .filter(el => el !== "")
   }
 
-  const parsePlayerDmg = (str: string) => {
+  const parsePlayerDmg = (str: string, index: number) => {
     try {
       const splitArr = str.split(DMG_DELIMETER)
       const name = splitArr[0].split('#')[0];
@@ -37,6 +37,7 @@ export function createDamageService(settingsService: ISettingsService) {
         name,
         className,
         damage: dmgObj,
+        slotNumber: index + 1,
       }
     } catch (e) {
       // shameless null plug
@@ -53,7 +54,7 @@ export function createDamageService(settingsService: ISettingsService) {
         const classFileStr = await fs.readFile(damageFilePath, 'utf-8');
         let infoArr = parseFileStr(classFileStr);
         const dungeonName = infoArr.shift() || "";
-        const playersDmg = infoArr.map(str => parsePlayerDmg(str)).filter(el => !!el);
+        const playersDmg = infoArr.map((str, index) => parsePlayerDmg(str, index)).filter(el => !!el);
         return {
             dungeonName: dungeonName,
             players: playersDmg
@@ -84,6 +85,7 @@ export function createDamageService(settingsService: ISettingsService) {
             }
 
             damageTypesObj[damageType].players.push({
+              slotNumber: playerDmg.slotNumber,
               playerName: playerDmg.name,
               damagePercentage,
               className: playerDmg.className,
