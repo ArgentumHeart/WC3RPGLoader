@@ -13,25 +13,27 @@ import { useCharacterContext } from './contexts/characterContext';
 import { ItemsPage } from './pages/ItemsPage';
 import { CharacterPage } from './pages/CharacterPage';
 import { LoaderPage } from './pages/LoaderPage';
-import { DamagePage } from './feature/damage/DamagePage'
+import { DamagePage } from './feature/damage/DamagePage';
 import { ItemPage } from './pages/ItemPage';
 import { FishingPage } from './pages/FishingPage';
 import { LastRunInfoPage } from './pages/LastRunInfoPage';
 import { useSettingsContext } from './contexts/settingsContext';
 import { iconFromId } from './icons/icons';
+import { BuildsPage } from './pages/BuildsPage';
+import { BuildPage } from './pages/BuildPage';
 
 export default function App() {
   const { loadClasses } = useCharacterContext();
   const { wc3path } = useSettingsContext();
 
   const onRefreshClick = () => {
-    loadClasses()
+    loadClasses();
     window.electron.ipcRenderer.sendMessage('request_last_run', wc3path);
     window.electron.ipcRenderer.sendMessage('get_latest_damage_by_type');
-  }
+  };
 
   return (
-    <Router initialEntries={[ '/characters' ]}>
+    <Router initialEntries={['/characters']}>
       <ThemeProvider theme={theme}>
         <Box sx={{ display: 'flex' }}>
           <CssBaseline />
@@ -68,6 +70,9 @@ export default function App() {
                 <MenuItem component={Link} to="/items">
                   Items
                 </MenuItem>
+                <MenuItem component={Link} to="/builds">
+                  Builds
+                </MenuItem>
                 <MenuItem component={Link} to="/fishing">
                   Fishing
                 </MenuItem>
@@ -97,16 +102,25 @@ export default function App() {
             }}
           >
             <Box sx={{ maxWidth: '105ch' }}>
-            <Routes>
-              <Route path="/items" element={<ItemsPage/>}/>
-              <Route path="/item/:id" element={<ItemPage/>}/>
-              <Route path="/characters/:accountURL?" element={<LoaderPage />}/>
-              <Route path="/settings" element={<Settings />}/>
-              <Route path="/damagereport/:type" element={<DamagePage />}/>
-              <Route path="/fishing" element={<FishingPage />} />
-              <Route path="/lastruninfo" element={<LastRunInfoPage />}/>
-              <Route path="/character/:accountURL/:id" element={<CharacterPage />} />
-            </Routes>
+              <Routes>
+                <Route path="/items" element={<ItemsPage />} />
+                <Route path="/item/:id" element={<ItemPage />} />
+                <Route
+                  path="/characters/:accountURL?"
+                  element={<LoaderPage />}
+                />
+                <Route path="/settings" element={<Settings />} />
+                <Route path="/damagereport/:type" element={<DamagePage />} />
+                <Route path="/fishing" element={<FishingPage />} />
+                <Route path="/lastruninfo" element={<LastRunInfoPage />} />
+                <Route
+                  path="/character/:accountURL/:id"
+                  element={<CharacterPage />}
+                />
+                <Route path="/builds" element={<BuildsPage />} />
+                <Route path="/builds/new" element={<BuildPage />} />
+                <Route path="/builds/:id" element={<BuildPage />} />
+              </Routes>
             </Box>
           </Box>
         </Box>

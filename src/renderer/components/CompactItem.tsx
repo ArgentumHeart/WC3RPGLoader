@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useCallback } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import { grey } from '@mui/material/colors';
@@ -8,14 +8,25 @@ import { useNavigate } from 'react-router-dom';
 import { useItemContext } from '../contexts/itemsContext';
 
 interface Props {
-  id?: string,
-  noTooltip?: boolean,
-  onClick?: () => void,
+  id?: string;
+  noTooltip?: boolean;
+  onClick?: () => void;
 }
 
 export const CompactItem: FC<Props> = ({ id, noTooltip, onClick }) => {
   const { items } = useItemContext();
   const navigate = useNavigate();
+  const handleClick = useCallback(
+    (event: React.MouseEvent) => {
+      event.stopPropagation();
+      if (onClick) {
+        onClick();
+      } else {
+        navigate(`/item/${id}`);
+      }
+    },
+    [onClick],
+  );
   if (!id) {
     return (
       <Avatar src={iconFromId('EmptySlotIcon')} variant="rounded">
@@ -35,20 +46,16 @@ export const CompactItem: FC<Props> = ({ id, noTooltip, onClick }) => {
   return (
     <Tooltip
       sx={{
-        boxShadow: 3
+        boxShadow: 3,
       }}
-      title={
-        !noTooltip 
-          ? <ItemCard id={id} item={items[id]} /> 
-          : null
-        }
+      title={!noTooltip ? <ItemCard id={id} item={items[id]} /> : null}
       placement="right-start"
     >
       <Avatar
         sx={{ cursor: 'pointer' }}
         variant="rounded"
         src={iconFromId(items[id].icon)}
-        onClick={() => navigate(`/item/${id}`)}
+        onClick={handleClick}
       />
     </Tooltip>
   );

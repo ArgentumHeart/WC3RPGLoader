@@ -1,4 +1,4 @@
-import { ChangeEvent, useMemo, useRef, useState } from 'react';
+import { ChangeEvent, useCallback, useMemo, useRef, useState } from 'react';
 import Box from '@mui/material/Box';
 import { Input, InputProps } from '@mui/material';
 import { CompactItem } from '../components/CompactItem';
@@ -26,7 +26,13 @@ function DebounceInput(props: InputProps & DebounceProps) {
   // eslint-disable-next-line react/jsx-props-no-spreading
   return <Input {...rest} onChange={handleChange} />;
 }
-export function ItemsPage() {
+
+type ItemsPageProps = {
+  onItemSelect?: (id: string) => void;
+};
+
+export function ItemsPage(props: ItemsPageProps) {
+  const { onItemSelect } = props;
   const { items } = useItemContext();
   const [filter, setFilter] = useState<string>('');
   console.log(items);
@@ -35,6 +41,15 @@ export function ItemsPage() {
       id.toLowerCase().includes(filter.toLowerCase()),
     );
   }, [filter]);
+
+  const handleClick = useCallback(
+    (id: string) => {
+      if (onItemSelect) {
+        onItemSelect(id);
+      }
+    },
+    [onItemSelect],
+  );
 
   return (
     <Box>
@@ -45,7 +60,11 @@ export function ItemsPage() {
       />
       <Box sx={{ display: 'flex', flexWrap: 'wrap', paddingTop: '20px' }}>
         {filteredItems.map((id) => (
-          <CompactItem key={id} id={id} />
+          <CompactItem
+            key={id}
+            id={id}
+            onClick={onItemSelect ? () => handleClick(id) : undefined}
+          />
         ))}
       </Box>
     </Box>
