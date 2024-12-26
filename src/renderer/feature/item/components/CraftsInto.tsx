@@ -28,8 +28,8 @@ function TiledItems({ items }: { items: TItem[] }) {
     if (!items || items.length === 0) return null;
     return (
         <Box sx={{ display: 'flex', flexWrap: 'wrap', paddingTop: '5px' }}>
-            {items.map((item) => (
-                <CompactItem key={`used_for_${item.id}`} id={item.id} />
+            {items.map((item, index) => (
+                <CompactItem key={`used_for_${item.id}_${index}`} id={item.id} />
             ))}
         </Box>
     )

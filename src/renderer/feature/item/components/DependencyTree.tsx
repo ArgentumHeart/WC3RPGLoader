@@ -18,8 +18,9 @@ export function ItemDependenciesTree(props: {item: TItem}) {
         <Typography variant="h6">Crafting</Typography>
         <TreeView sx={{ paddingTop: '10px' }}>
           {
-            item.recipe.map((craftingId: string) => (
-              <ItemDependency key={craftingId} index={item.id} id={craftingId} />
+            // additional indexing for recipes with duplicate items
+            item.recipe.map((craftingId, index) => (
+              <ItemDependency key={`${craftingId}_${index}`} index={item.id} id={craftingId} />
             ))
           }
         </TreeView>
